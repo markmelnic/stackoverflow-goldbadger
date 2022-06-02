@@ -1,4 +1,4 @@
-import time, enum, random, logging
+import time, enum, random
 
 
 from selenium import webdriver
@@ -76,16 +76,14 @@ class StackOverflowBot:
         Timeouts.med()
 
     def vote(self, link: str) -> None:
-        """action: True to upvote, False to downvote"""
-
-        Timeouts.med()
-
         page_index = 1
         while True:
-            self.dv.get(link + f'&page={page_index}')
+            self.dv.get(link + f"&page={page_index}")
 
             posts = []
-            for post in self.dv.find_elements(By.CLASS_NAME, "s-post-summary--content-title"):
+            for post in self.dv.find_elements(
+                By.CLASS_NAME, "s-post-summary--content-title"
+            ):
                 post_link = post.find_element(By.TAG_NAME, "a")
                 posts.append(post_link.get_attribute("href"))
 
@@ -94,8 +92,7 @@ class StackOverflowBot:
                 Timeouts.med()
 
                 button = self.dv.find_element(
-                    By.XPATH,
-                    '//*[@id="question"]/div[2]/div[1]/div/button[1]'
+                    By.XPATH, '//*[@id="question"]/div[2]/div[1]/div/button[1]'
                 )
                 button.click()
 
@@ -106,8 +103,7 @@ class StackOverflowBot:
     def _cookies_handler(self) -> None:
         try:
             accept_button = self.dv.find_element(
-                By.XPATH,
-                "/html/body/div[4]/div/button[1]"
+                By.XPATH, "/html/body/div[4]/div/button[1]"
             )
             accept_button.click()
         except NoSuchElementException:

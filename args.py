@@ -7,13 +7,13 @@ def cmdline_args() -> ArgumentParser:
         "-e",
         "--email",
         dest="email",
-        help='[str] Account email',
+        help="[str] Account email",
     )
     parser.add_argument(
         "-p",
         "--pass",
         dest="password",
-        help='[str] Account password',
+        help="[str] Account password",
     )
     parser.add_argument(
         "-a",
@@ -25,7 +25,7 @@ def cmdline_args() -> ArgumentParser:
         "-l",
         "--link",
         dest="link",
-        help='[str] Link to start at.',
+        help="[str] Link to start at.",
     )
     parser.add_argument(
         "-v",
