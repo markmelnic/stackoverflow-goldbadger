@@ -91,12 +91,13 @@ class StackOverflowBot:
                 self.dv.get(post_link)
                 Timeouts.med()
 
-                button = self.dv.find_element(
-                    By.XPATH, '//*[@id="question"]/div[2]/div[1]/div/button[1]'
-                )
-                button.click()
-
-                Timeouts.med()
+                try:
+                    button = self.dv.find_element(
+                        By.XPATH, '//*[@id="question"]/div[2]/div[1]/div/button[1]'
+                    )
+                    button.click()
+                finally:
+                    Timeouts.med()
 
             page_index += 1
 
